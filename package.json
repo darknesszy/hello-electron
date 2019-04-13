@@ -1,0 +1,31 @@
+{
+  "name": "hello-electron",
+  "version": "1.0.0",
+  "description": "boilerplate project to get myself started with Electron running React",
+  "scripts": {
+    "start": "electron-webpack dev",
+    "build": "npm run "
+  },
+  "author": "Michael May",
+  "license": "MIT",
+  "electronWebpack": {
+    "title": "Hello Electron App"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rxjs": "^6.4.0",
+    "source-map-support": "^0.5.10"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.4",
+    "electron": "4.0.1",
+    "electron-builder": "20.38.4",
+    "electron-webpack": "^2.6.2",
+    "electron-webpack-ts": "^3.1.1",
+    "typescript": "^3.4.3",
+    "webpack": "4.28.4"
+  }
+}
