@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import App from './app'
-
-ReactDOM.render(App({}), document.getElementById('app'))
+const app = App;
+// ReactDOM.render(App(), document.getElementById('app'))
