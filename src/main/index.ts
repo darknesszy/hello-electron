@@ -1,17 +1,18 @@
-'use strict'
-
 import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { format as formatUrl } from 'url'
-import MainWindow from './MainWindow'
+import { TYPES } from './utilities/types'
+import { IController } from './utilities/controller'
+import container from './utilities/container'
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
 // global reference to mainWindow (necessary to prevent window from being garbage collected)
-let mainWindow:MainWindow | null;
+let mainWindow:BrowserWindow | null
+const controllers = container.get<IController>(TYPES.Controller)
 
 function createMainWindow() {
-  const window = new MainWindow()
+  const window = new BrowserWindow()
 
   if (isDevelopment) {
     window.webContents.openDevTools()
@@ -46,6 +47,7 @@ function createMainWindow() {
 app.on('window-all-closed', () => {
   // on macOS it is common for applications to stay open until the user explicitly quits
   if (process.platform !== 'darwin') {
+    controllers.cleanup()
     app.quit()
   }
 })
@@ -53,6 +55,7 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   // on macOS it is common to re-create a window even after all windows have been closed
   if (mainWindow === null) {
+    controllers.connect()
     mainWindow = createMainWindow()
   }
 })

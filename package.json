@@ -12,9 +12,11 @@
     "title": "Hello Electron App"
   },
   "dependencies": {
+    "electron-store": "^4.0.0",
+    "inversify": "^5.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "rxjs": "^6.4.0",
+    "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.10"
   },
   "devDependencies": {

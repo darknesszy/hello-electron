@@ -1,24 +1,14 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom'
-import { ipcRenderer } from 'electron';
+import React from 'react'
 
-const App = () => {
-    const [value, setValue] = useState('')
-
-    const handleChange = (val:string) => {
-        setValue(ipcRenderer.sendSync('writeLine', val))
-    }
+export default () => {
 
     return (
-        <>
-            <div>Hello Electron</div>
-            <input
-            value={value}
-            onChange={e => handleChange(e.target.value)}
-            />
-        </>
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-auto">
+                    <h1>Hello Electron</h1>
+                </div>
+            </div>
+        </div>
     )
 }
-
-ReactDOM.render(<App />, document.getElementById('app'))
-export default App;
