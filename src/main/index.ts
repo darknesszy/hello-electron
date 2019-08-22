@@ -12,7 +12,10 @@ let mainWindow:BrowserWindow | null
 const controllers = container.get<IController>(TYPES.Controller)
 
 function createMainWindow() {
-  const window = new BrowserWindow()
+  const window = new BrowserWindow({
+    width: 375,
+    height: 545
+  })
 
   if (isDevelopment) {
     window.webContents.openDevTools()
@@ -62,5 +65,6 @@ app.on('activate', () => {
 
 // create main BrowserWindow when electron is ready
 app.on('ready', () => {
+  controllers.connect()
   mainWindow = createMainWindow()
 })

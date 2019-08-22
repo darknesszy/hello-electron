@@ -4,12 +4,13 @@
   "description": "boilerplate project to get myself started with Electron running React",
   "scripts": {
     "start": "electron-webpack dev",
-    "build": "npm run "
+    "compile": "electron-webpack",
+    "build": "npm run compile && electron-builder"
   },
   "author": "Michael May",
   "license": "MIT",
   "electronWebpack": {
-    "title": "Hello Electron App"
+    "title": "Hello Electron"
   },
   "dependencies": {
     "electron-store": "^4.0.0",

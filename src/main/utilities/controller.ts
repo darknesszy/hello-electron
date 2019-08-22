@@ -1,5 +1,6 @@
-import { injectable } from "inversify"
+import { injectable, inject } from "inversify"
 import { ipcMain } from 'electron'
+import { TYPES } from "./types";
 
 export interface IController {
     connect:Function
@@ -9,10 +10,13 @@ export interface IController {
 @injectable()
 export class Controller implements IController {
 
+    @inject(TYPES.TaskManager) taskManager!: IControllable
     private actionMap = new Map()
 
     public connect() {
-        this.actionMap = new Map([ ])
+        this.actionMap = new Map([
+            ...this.taskManager.actionMap
+        ])
         ipcMain.on('service', this.listener.bind(this))
     }
 
